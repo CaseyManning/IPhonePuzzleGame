@@ -30,7 +30,7 @@ class GameScene: SKScene {
     var startPosititons = [CGPointMake(3, 2), CGPointMake(4, 2), CGPointMake(5, 2)]
     
     let height = 40
-    var bugs: [Enemy] = [Enemy()]
+    var bugs: [[Enemy]] = [[EnemyBackAndForth(x: 4, y: 5)], [EnemyBlocker(x: 4, y: 5)], [EnemyBackAndForth(x: 4, y: 5)]]
     var gems: [Gem] = [Gem(x: 4, y: 5, color: "OrangeSmall")]
     var numGems = 0
     var levelDone = false
@@ -63,10 +63,7 @@ class GameScene: SKScene {
         nextLevel()
         print("Level is \(level)")
         print("Positioning player at: \(startPosititons[level])")
-        let b = EnemyBackAndForth()
-        b.loadEnemy(4, y: 5)
-        bugs[0] = b
-        for bug in bugs {
+        for bug in bugs[level] {
             addChild(bug.sprite)
         }
         for gem in gems {
@@ -149,6 +146,8 @@ class GameScene: SKScene {
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        
+        if levelDone { return }
        /* Called when a touch begins */
         let playerHeight = map[Int(convertPointToGrid(player.position).x)][Int(convertPointToGrid(player.position).y)].y
         for touch in touches {
@@ -186,10 +185,10 @@ class GameScene: SKScene {
         } else if newPlayerHeight < playerHeight {
             player.position.y -= CGFloat(height)
         }
-        player.zPosition = convertPointToGrid(player.position).y * -2 + 1
+        player.zPosition = convertPointToGrid(player.position).y * -2 + 1.5
         checkForBugCollisions()
-        for bug in bugs {
-            bug.move(player.position, map: map)
+        for bug in bugs[level] {
+            bug.move(convertPointToGrid(player.position), map: map)
         }
         for gem in gems {
             if Int(convertPointToGrid(player.position).x) == gem.x && Int(convertPointToGrid(player.position).y) == gem.y {
@@ -203,7 +202,9 @@ class GameScene: SKScene {
     }
     
     func checkForBugCollisions() {
-        for bug in bugs {
+        if levelDone { return }
+        
+        for bug in bugs[level] {
             if Int(convertPointToGrid(player.position).x) == Int(convertPointToGrid(bug.sprite.position).x) && Int(convertPointToGrid(player.position).y) == Int(convertPointToGrid(bug.sprite.position).y) {
                 //Ya dead! 
                 restartLevel()

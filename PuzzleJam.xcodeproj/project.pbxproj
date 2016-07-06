@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		824A7B2E1D2D9E8700BB9630 /* EnemyBlocker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824A7B2D1D2D9E8700BB9630 /* EnemyBlocker.swift */; };
 		8276876F1D26C7A600BCCD50 /* Character Horn Girl.png in Resources */ = {isa = PBXBuildFile; fileRef = 8276876E1D26C7A600BCCD50 /* Character Horn Girl.png */; };
 		827687711D26CB9400BCCD50 /* EnemyBackAndForth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827687701D26CB9400BCCD50 /* EnemyBackAndForth.swift */; };
 		827687731D26F82600BCCD50 /* Gem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827687721D26F82600BCCD50 /* Gem.swift */; };
@@ -82,6 +83,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		824A7B2D1D2D9E8700BB9630 /* EnemyBlocker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyBlocker.swift; sourceTree = "<group>"; };
 		8276876E1D26C7A600BCCD50 /* Character Horn Girl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Character Horn Girl.png"; sourceTree = "<group>"; };
 		827687701D26CB9400BCCD50 /* EnemyBackAndForth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyBackAndForth.swift; sourceTree = "<group>"; };
 		827687721D26F82600BCCD50 /* Gem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gem.swift; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 				82E8252F1D24350400ABAAF6 /* LaunchScreen.storyboard */,
 				82E825321D24350400ABAAF6 /* Info.plist */,
 				82E825B31D24922D00ABAAF6 /* Enemy.swift */,
+				824A7B2D1D2D9E8700BB9630 /* EnemyBlocker.swift */,
 				827687701D26CB9400BCCD50 /* EnemyBackAndForth.swift */,
 				827687721D26F82600BCCD50 /* Gem.swift */,
 				827687741D27482200BCCD50 /* Animations.sks */,
@@ -413,6 +416,7 @@
 				82E825B41D24922D00ABAAF6 /* Enemy.swift in Sources */,
 				827687731D26F82600BCCD50 /* Gem.swift in Sources */,
 				82E825291D24350400ABAAF6 /* GameViewController.swift in Sources */,
+				824A7B2E1D2D9E8700BB9630 /* EnemyBlocker.swift in Sources */,
 				82E825231D24350400ABAAF6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
