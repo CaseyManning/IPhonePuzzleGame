@@ -14,6 +14,7 @@
 		827687751D27482200BCCD50 /* Animations.sks in Resources */ = {isa = PBXBuildFile; fileRef = 827687741D27482200BCCD50 /* Animations.sks */; };
 		827687771D274BBE00BCCD50 /* Gem Orange2.png in Resources */ = {isa = PBXBuildFile; fileRef = 827687761D274BBE00BCCD50 /* Gem Orange2.png */; };
 		827687791D282AA400BCCD50 /* Gem OrangeSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 827687781D282AA400BCCD50 /* Gem OrangeSmall.png */; };
+		82ABD2941D2DB681009E52C8 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ABD2931D2DB681009E52C8 /* Level.swift */; };
 		82E825231D24350400ABAAF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E825221D24350400ABAAF6 /* AppDelegate.swift */; };
 		82E825251D24350400ABAAF6 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 82E825241D24350400ABAAF6 /* GameScene.sks */; };
 		82E825271D24350400ABAAF6 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E825261D24350400ABAAF6 /* GameScene.swift */; };
@@ -90,6 +91,7 @@
 		827687741D27482200BCCD50 /* Animations.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Animations.sks; sourceTree = "<group>"; };
 		827687761D274BBE00BCCD50 /* Gem Orange2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Gem Orange2.png"; sourceTree = "<group>"; };
 		827687781D282AA400BCCD50 /* Gem OrangeSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Gem OrangeSmall.png"; sourceTree = "<group>"; };
+		82ABD2931D2DB681009E52C8 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		82E8251F1D24350400ABAAF6 /* PuzzleJam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PuzzleJam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82E825221D24350400ABAAF6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		82E825241D24350400ABAAF6 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 				827687701D26CB9400BCCD50 /* EnemyBackAndForth.swift */,
 				827687721D26F82600BCCD50 /* Gem.swift */,
 				827687741D27482200BCCD50 /* Animations.sks */,
+				82ABD2931D2DB681009E52C8 /* Level.swift */,
 			);
 			path = PuzzleJam;
 			sourceTree = "<group>";
@@ -417,6 +420,7 @@
 				827687731D26F82600BCCD50 /* Gem.swift in Sources */,
 				82E825291D24350400ABAAF6 /* GameViewController.swift in Sources */,
 				824A7B2E1D2D9E8700BB9630 /* EnemyBlocker.swift in Sources */,
+				82ABD2941D2DB681009E52C8 /* Level.swift in Sources */,
 				82E825231D24350400ABAAF6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -14,7 +14,7 @@ class GameScene: SKScene {
     
     var level = -1
     
-    var levels: [[[CGPoint]]] = [[[CGPoint]]]()
+    var levels: [Level] = [Level]()
     static let daoffsetX = 50
     static let daoffsetY = 70
     static let datileWidth = 100
@@ -30,8 +30,6 @@ class GameScene: SKScene {
     var startPosititons = [CGPointMake(3, 2), CGPointMake(4, 2), CGPointMake(5, 2)]
     
     let height = 40
-    var bugs: [[Enemy]] = [[EnemyBackAndForth(x: 4, y: 5)], [EnemyBlocker(x: 4, y: 5)], [EnemyBackAndForth(x: 4, y: 5)]]
-    var gems: [Gem] = [Gem(x: 4, y: 5, color: "OrangeSmall")]
     var numGems = 0
     var levelDone = false
     
@@ -63,10 +61,10 @@ class GameScene: SKScene {
         nextLevel()
         print("Level is \(level)")
         print("Positioning player at: \(startPosititons[level])")
-        for bug in bugs[level] {
+        for bug in levels[level].bugs {
             addChild(bug.sprite)
         }
-        for gem in gems {
+        for gem in levels[level].gems {
             gem.sprite.zPosition = 100
             addChild(gem.sprite)
             gem.sprite.runAction(SKAction(named: "GemHovering")!)
@@ -90,7 +88,7 @@ class GameScene: SKScene {
     func loadLevels() {
         //X value is tile type. Y value is tile height
         
-        levels.append([[C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+        let level1 = [[C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
                        [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
                        [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
                        [C(3, y: 0), C(3, y: 0), C(0, y: 1), C(0, y: 1), C(3, y: 0), C(0, y: 1), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
@@ -102,9 +100,9 @@ class GameScene: SKScene {
                        [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
                        [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
                        [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
-                       [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)]])
+                       [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)]]
         
-        levels.append([[C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+        let level2 = [[C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
             [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
             [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
             [C(3, y: 0), C(3, y: 0), C(0, y: 1), C(0, y: 1), C(3, y: 0), C(0, y: 1), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
@@ -116,9 +114,9 @@ class GameScene: SKScene {
             [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
             [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
             [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
-            [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)]])
+            [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)]]
         
-        levels.append([[C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+        let level3 = [[C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
             [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
             [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
             [C(3, y: 0), C(3, y: 0), C(0, y: 1), C(0, y: 1), C(3, y: 0), C(0, y: 1), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
@@ -126,11 +124,16 @@ class GameScene: SKScene {
             [C(3, y: 0), C(3, y: 0), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(3, y: 0), C(3, y: 0)],
             [C(3, y: 0), C(3, y: 0), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(3, y: 0), C(3, y: 0)],
             [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(3, y: 0), C(3, y: 0)],
+            [C(3, y: 0), C(3, y: 0), C(3, y:
+                0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
             [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
             [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
             [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
-            [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
-            [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)]])
+            [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)]]
+        
+        levels.append(Level(map: level1, x: 3, y: 2, bugs: [EnemyBackAndForth(x: 4, y: 5)], gems: [Gem(x: 4, y: 5, color: "OrangeSmall")]))
+        levels.append(Level(map: level2, x: 3, y: 2, bugs: [EnemyBlocker(x: 4, y: 5)], gems: [Gem(x: 4, y: 5, color: "OrangeSmall")]))
+        levels.append(Level(map: level3, x: 3, y: 2, bugs: [EnemyBackAndForth(x: 4, y: 5)], gems: [Gem(x: 4, y: 5, color: "OrangeSmall")]))
     }
     
     func canMove(position: CGPoint, move: CGPoint) -> Bool {
@@ -187,11 +190,11 @@ class GameScene: SKScene {
         }
         player.zPosition = convertPointToGrid(player.position).y * -2 + 1.5
         checkForBugCollisions()
-        for bug in bugs[level] {
+        for bug in levels[level].bugs {
             bug.move(convertPointToGrid(player.position), map: map)
         }
-        for gem in gems {
-            if Int(convertPointToGrid(player.position).x) == gem.x && Int(convertPointToGrid(player.position).y) == gem.y {
+        for gem in levels[level].gems {
+            if Int(convertPointToGrid(player.position).x) == gem.x && Int(convertPointToGrid(player.position).y) == gem.y && gem.sprite.parent == self {
                 // You gots the gem!
                 gem.sprite.removeFromParent()
                 numGems += 1
@@ -204,7 +207,7 @@ class GameScene: SKScene {
     func checkForBugCollisions() {
         if levelDone { return }
         
-        for bug in bugs[level] {
+        for bug in levels[level].bugs {
             if Int(convertPointToGrid(player.position).x) == Int(convertPointToGrid(bug.sprite.position).x) && Int(convertPointToGrid(player.position).y) == Int(convertPointToGrid(bug.sprite.position).y) {
                 //Ya dead! 
                 restartLevel()
@@ -293,7 +296,7 @@ class GameScene: SKScene {
     func nextLevel() {
         level += 1
         print("DOTATOP \(level)")
-        for list in levels[level] {
+        for list in levels[level].map {
             map.append(list)
         }
         removeAllChildren()
