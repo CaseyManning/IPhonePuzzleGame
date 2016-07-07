@@ -13,7 +13,7 @@ class EnemyBackAndForth: Enemy {
     
     var back = false
     var mapX = 0
-    var mapY = 0
+    var mapY = 1
     var mapZ = 0
     
     init(x: Int, y: Int) {
@@ -29,9 +29,9 @@ class EnemyBackAndForth: Enemy {
         
     }
     
-    override func move(playerPosition: CGPoint, map: [[CGPoint]]) {
+    override func move(playerPosition: Vector3, map: [[[Int]]]) {
         if back {
-            if map[mapX][mapY].y == map[mapX - 1][mapY].y {
+            if map[mapY][mapZ][mapX - 1] == 0 {
                 mapX -= 1
                 sprite.position.x -= CGFloat(GameScene.datileWidth)
                 return
@@ -43,7 +43,7 @@ class EnemyBackAndForth: Enemy {
                 return
             }
         } else {
-            if map[mapX][mapY].y == map[mapX + 1][mapY].y {
+            if map[mapY][mapZ][mapX + 1] == 0 {
                 
                 mapX += 1
                 sprite.position.x += CGFloat(GameScene.datileWidth)
