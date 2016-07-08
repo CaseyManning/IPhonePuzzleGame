@@ -17,6 +17,7 @@
 		82ABD2941D2DB681009E52C8 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ABD2931D2DB681009E52C8 /* Level.swift */; };
 		82ABD2961D2DC893009E52C8 /* Vector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ABD2951D2DC893009E52C8 /* Vector3.swift */; };
 		82ABD2981D2EC0B3009E52C8 /* 0.png in Resources */ = {isa = PBXBuildFile; fileRef = 82ABD2971D2EC0B3009E52C8 /* 0.png */; };
+		82ABD29A1D2F0E3C009E52C8 /* 9.png in Resources */ = {isa = PBXBuildFile; fileRef = 82ABD2991D2F0E3C009E52C8 /* 9.png */; };
 		82E825231D24350400ABAAF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E825221D24350400ABAAF6 /* AppDelegate.swift */; };
 		82E825251D24350400ABAAF6 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 82E825241D24350400ABAAF6 /* GameScene.sks */; };
 		82E825271D24350400ABAAF6 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E825261D24350400ABAAF6 /* GameScene.swift */; };
@@ -96,6 +97,7 @@
 		82ABD2931D2DB681009E52C8 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		82ABD2951D2DC893009E52C8 /* Vector3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector3.swift; sourceTree = "<group>"; };
 		82ABD2971D2EC0B3009E52C8 /* 0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 0.png; sourceTree = "<group>"; };
+		82ABD2991D2F0E3C009E52C8 /* 9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 9.png; sourceTree = "<group>"; };
 		82E8251F1D24350400ABAAF6 /* PuzzleJam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PuzzleJam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82E825221D24350400ABAAF6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		82E825241D24350400ABAAF6 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 		82E8253C1D24826C00ABAAF6 /* IsometricAssets */ = {
 			isa = PBXGroup;
 			children = (
+				82ABD2991D2F0E3C009E52C8 /* 9.png */,
 				82ABD2971D2EC0B3009E52C8 /* 0.png */,
 				82E825461D24826C00ABAAF6 /* 1.png */,
 				82E8254D1D24826C00ABAAF6 /* 2.png */,
@@ -387,6 +390,7 @@
 				82E825A01D24826C00ABAAF6 /* Shadow South East.png in Resources */,
 				82E825A51D24826C00ABAAF6 /* Star.png in Resources */,
 				82E825851D24826C00ABAAF6 /* Gem Green.png in Resources */,
+				82ABD29A1D2F0E3C009E52C8 /* 9.png in Resources */,
 				82E8259F1D24826C00ABAAF6 /* Shadow Side West.png in Resources */,
 				82E825AF1D24826C00ABAAF6 /* Window Tall.png in Resources */,
 				82E825791D24826C00ABAAF6 /* Character Cat Girl.png in Resources */,
