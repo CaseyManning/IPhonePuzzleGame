@@ -22,7 +22,7 @@ class Enemy{
         
     }
     
-    func move(playerPosition: Vector3, map: [[[Int]]]) {
+    func move(playerPosition: CGPoint, map: [[CGPoint]]) {
         
     }
     

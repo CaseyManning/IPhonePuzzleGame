@@ -10,7 +10,7 @@ import SpriteKit
 
 class GameScene: SKScene {
     
-    var map: [[[Int]]] = []
+    var map: [[CGPoint]] = []
     
     var level = -1
     
@@ -26,10 +26,8 @@ class GameScene: SKScene {
     var offsetx = 50
     var offsety = 70
     
-    var goalLocations = [Vector3(x: 7, z: 6, y: 0), Vector3(x: 7, z: 6, y: 0), Vector3(x: 7, z: 6, y: 0)]
-    var startPosititons = [Vector3(x: 3, z: 2, y: 0), Vector3(x: 4, z: 2, y: 0), Vector3(x: 5, z: 2, y: 0)]
-    
-    
+    var goalLocations = [CGPointMake(7, 6), CGPointMake(7, 6), CGPointMake(7, 6)]
+    var startPosititons = [CGPointMake(3, 2), CGPointMake(4, 2), CGPointMake(5, 2)]
     
     let height = 40
     var numGems = 0
@@ -51,10 +49,6 @@ class GameScene: SKScene {
     var text1: SKLabelNode!
     var text2: SKLabelNode!
     var numText: SKLabelNode!
-    
-    var playerX = 0
-    var playerY = 0
-    var playerZ = 0
 
     
     override func didMoveToView(view: SKView) {
@@ -77,8 +71,10 @@ class GameScene: SKScene {
         }
         
         
+
+        let playerHeight = map[Int(convertPointToGrid(player.position).x)][Int(convertPointToGrid(player.position).y)].y
+        player.position.y += playerHeight*CGFloat(height)
     }
-    
     func C(x: Int, y: Int) -> CGPoint {
         return CGPoint(x: x, y: y)
     }
@@ -92,7 +88,7 @@ class GameScene: SKScene {
     func loadLevels() {
         //X value is tile type. Y value is tile height
         
-        /*let level1 = [[C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+        let level1 = [[C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
                        [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
                        [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
                        [C(3, y: 0), C(3, y: 0), C(0, y: 1), C(0, y: 1), C(3, y: 0), C(0, y: 1), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
@@ -133,73 +129,30 @@ class GameScene: SKScene {
             [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
             [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
             [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
-            [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)]]*/
-        
-        var level1: [[[Int]]] = [[[]]]
-        
-                let d = [[0, 0, 0, 0, 0, 0, 0, 0, 0],
-                         [0, 0, 0, 0, 0, 0, 0, 0, 0],
-                         [0, 0, 0, 0, 0, 0, 0, 0, 0],
-                         [0, 0, 0, 0, 0, 0, 0, 0, 0],
-                         [0, 0, 0, 0, 0, 0, 0, 0, 0],
-                         [0, 0, 0, 0, 0, 0, 0, 0, 0],
-                         [0, 0, 0, 0, 0, 0, 0, 0, 0],
-                         [0, 0, 0, 0, 0, 0, 0, 0, 0],
-                         [0, 0, 0, 0, 0, 0, 0, 0, 0],
-                         [0, 0, 0, 0, 0, 0, 0, 0, 0],
-                         [0, 0, 0, 0, 0, 0, 0, 0, 0],
-                         [0, 0, 0, 0, 0, 0, 0, 0, 0],
-                         [0, 0, 0, 0, 0, 0, 0, 0, 0]]
-        
-        level1.append(d)
-        
-        
-                let a = [[0, 0, 0, 0, 0, 0, 0, 0, 0],
-                         [0, 0, 0, 0, 0, 0, 0, 0, 0],
-                         [0, 0, 0, 1, 1, 1, 1, 0, 0],
-                         [0, 0, 1, 1, 1, 1, 1, 0, 0],
-                         [0, 0, 1, 1, 1, 1, 1, 0, 0],
-                         [0, 0, 1, 1, 1, 1, 1, 0, 0],
-                         [0, 0, 1, 1, 1, 1, 1, 0, 0],
-                         [0, 0, 1, 0, 0, 0, 1, 0, 0],
-                         [0, 0, 1, 1, 1, 1, 1, 0, 0],
-                         [0, 0, 0, 0, 0, 0, 0, 0, 0],
-                         [0, 0, 0, 0, 0, 0, 0, 0, 0],
-                         [0, 0, 0, 0, 0, 0, 0, 0, 0],
-                         [0, 0, 0, 0, 0, 0, 0, 0, 0]]
-        level1.append(a)
-        
-                let f = [[4, 4, 4, 4, 4, 4, 4, 4, 4],
-                         [4, 4, 4, 4, 4, 4, 4, 4, 4],
-                         [4, 4, 4, 1, 1, 1, 1, 4, 4],
-                         [4, 4, 1, 1, 1, 1, 1, 4, 4],
-                         [4, 4, 1, 1, 1, 1, 1, 4, 4],
-                         [4, 4, 1, 1, 1, 1, 1, 4, 4],
-                         [4, 4, 1, 1, 1, 1, 1, 4, 4],
-                         [4, 4, 1, 4, 4, 4, 1, 4, 4],
-                         [4, 4, 1, 1, 1, 1, 1, 4, 4],
-                         [4, 4, 4, 4, 4, 4, 4, 4, 4],
-                         [4, 4, 4, 4, 4, 4, 4, 4, 4],
-                         [4, 4, 4, 4, 4, 4, 4, 4, 4],
-                         [4, 4, 4, 4, 4, 4, 4, 4, 4]]
-        
-        level1.append(f)
-
+            [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)]]
         
         levels.append(Level(map: level1, x: 3, y: 2, bugs: [EnemyBackAndForth(x: 4, y: 5)], gems: [Gem(x: 4, y: 5, color: "OrangeSmall")]))
-        levels.append(Level(map: level1, x: 3, y: 2, bugs: [EnemyBlocker(x: 4, y: 5)], gems: [Gem(x: 4, y: 5, color: "OrangeSmall")]))
-        levels.append(Level(map: level1, x: 3, y: 2, bugs: [EnemyBackAndForth(x: 4, y: 5)], gems: [Gem(x: 4, y: 5, color: "OrangeSmall")]))
+        levels.append(Level(map: level2, x: 3, y: 2, bugs: [EnemyBlocker(x: 4, y: 5)], gems: [Gem(x: 4, y: 5, color: "OrangeSmall")]))
+        levels.append(Level(map: level3, x: 3, y: 2, bugs: [EnemyBackAndForth(x: 4, y: 5)], gems: [Gem(x: 4, y: 5, color: "OrangeSmall")]))
     }
     
-    func canMove(move: Vector3) -> Bool {
+    func canMove(position: CGPoint, move: CGPoint) -> Bool {
+        let a = Int(convertPointToGrid(move).x)
+        let b = Int(convertPointToGrid(move).y)
+        let c = Int(convertPointToGrid(position).x)
+        let d = Int(convertPointToGrid(position).y)
         
-        return map[move.y][move.x][move.z] == 0
+        print("Moving from (\(c), \(d)) to (\(a), \(b))")
+        
+        print("We are moving to height of \(map[c][d].y) from height of \(map[a][b].y)")
+        return map[a][b].y == map[c][d].y
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         
         if levelDone { return }
        /* Called when a touch begins */
+        let playerHeight = map[Int(convertPointToGrid(player.position).x)][Int(convertPointToGrid(player.position).y)].y
         for touch in touches {
            let diffx = touch.locationInNode(self).x - player.position.x
            let diffy = touch.locationInNode(self).y - player.position.y
@@ -207,32 +160,38 @@ class GameScene: SKScene {
             if(abs(diffx) > abs(diffy)) {
                 //moving on the x-axis
                 if(diffx > 0) {
-                    if(canMove(Vector3( x: playerX + 1, z: playerZ, y: playerY))) {
+                    if(canMove(player.position, move: CGPointMake(player.position.x + CGFloat(tileWidth), player.position.y))) {
                     player.position.x += CGFloat(tileWidth)
                     }
                 } else {
-                    if(canMove(Vector3(x: playerX - 1, z: playerZ, y: playerY))) {
+                        if(canMove(player.position, move: CGPointMake(player.position.x - CGFloat(tileWidth), player.position.y))) {
                      player.position.x -= CGFloat(tileWidth)
                     }
                 }
             } else {
-                //moving on the z-axis
+                //moving on the y-axis
                 if(diffy > 0) {
-                    if(canMove(Vector3(x: playerX, z: playerZ + 1, y: playerY))) {
+                    if(canMove(player.position, move: CGPointMake(player.position.x, player.position.y + CGFloat(tileHeight)))) {
                         player.position.y += CGFloat(tileHeight)
                     }
                 } else {
-                    if(canMove(Vector3(x: playerX, z: playerZ - 1, y: playerY))) {
+                    if(canMove(player.position, move: CGPointMake(player.position.x, player.position.y - CGFloat(tileHeight)))) {
                         player.position.y -= CGFloat(tileHeight)
                     }
                 }
             }
         
         }
-        player.zPosition = convertPointToGrid(player.position).y * 2 + 1.5
+        let newPlayerHeight = map[Int(convertPointToGrid(player.position).x)][Int(convertPointToGrid(player.position).y)].y
+        if newPlayerHeight > playerHeight {
+            player.position.y += CGFloat(height)
+        } else if newPlayerHeight < playerHeight {
+            player.position.y -= CGFloat(height)
+        }
+        player.zPosition = convertPointToGrid(player.position).y * -2 + 1.5
         checkForBugCollisions()
         for bug in levels[level].bugs {
-            bug.move(Vector3(x: playerX, z: playerZ, y: playerY), map: map)
+            bug.move(convertPointToGrid(player.position), map: map)
         }
         for gem in levels[level].gems {
             if Int(convertPointToGrid(player.position).x) == gem.x && Int(convertPointToGrid(player.position).y) == gem.y && gem.sprite.parent == self {
@@ -248,7 +207,6 @@ class GameScene: SKScene {
     func checkForBugCollisions() {
         if levelDone { return }
         
-        //This line gives fatal error: Index out of range when I die and the game restarts
         for bug in levels[level].bugs {
             if Int(convertPointToGrid(player.position).x) == Int(convertPointToGrid(bug.sprite.position).x) && Int(convertPointToGrid(player.position).y) == Int(convertPointToGrid(bug.sprite.position).y) {
                 //Ya dead! 
@@ -261,7 +219,7 @@ class GameScene: SKScene {
        checkForBugCollisions()
        // :(
         //print("Does (\(Int(convertPointToGrid(player.position).x)), \(Int(convertPointToGrid(player.position).y))) equal \(goalLocation)")
-        if playerX == Int(goalLocations[level].x) && playerZ == Int(goalLocations[level].y) && goal.parent == self && playerY == goalLocations[level].y {
+        if Int(convertPointToGrid(player.position).x) == Int(goalLocations[level].x) && Int(convertPointToGrid(player.position).y) == Int(goalLocations[level].y) && goal.parent == self {
             print("You have completeted the level with sufficient bug-avoiding aptitude to continue. Yay.")
             goal.removeFromParent()
             levelDone = true
@@ -270,6 +228,8 @@ class GameScene: SKScene {
             numText.zPosition = 100
             numText.text = String(numGems)
             nextLevel()
+            player.position = CGPointMake(startPosititons[level].x*CGFloat(tileWidth) + CGFloat(offsetx + (map.count/2)*tileWidth*5), startPosititons[level].y*CGFloat(tileHeight) + CGFloat(offsety + height
+                ))
             
              addChild(text1)
              addChild(text2)
@@ -279,16 +239,14 @@ class GameScene: SKScene {
        
         if levelDone {
             scroll += 5
-            if scroll > /*380000*/(map[0].count/2)*tileWidth {
+            if scroll > /*380000*/(map.count/2)*tileWidth {
                 levelDone = false
                 //level += 1
-                for i in 1...map.count/2 {
-                    map[i].removeFirst()
-                    
+                for _ in 1...map.count/2 {
+                    map.removeFirst()
+                    player.position = CGPointMake(startPosititons[level].x*CGFloat(tileWidth) + CGFloat(offsetx), startPosititons[level].y*CGFloat(tileHeight) + CGFloat(offsety + height
+                        ))
                 }
-                
-                player.position = CGPointMake(CGFloat(startPosititons[level].x*tileWidth + offsetx), CGFloat(startPosititons[level].y*tileHeight + offsety + height))
-                
                 let skView = self.view as SKView!
                 
                 /* Load Game scene */
@@ -337,35 +295,30 @@ class GameScene: SKScene {
     
     func nextLevel() {
         level += 1
-        //Error: Will extend map upwards, not to the side
-        
+        print("DOTATOP \(level)")
         for list in levels[level].map {
             map.append(list)
         }
-       
         removeAllChildren()
         for(i, foo) in map.enumerate() {
             for(j, bar) in foo.enumerate() {
-                for(k, foobar) in bar.enumerate() {
-                     print("I is \(i), j is \(j), and k is \(k)")
-                    let sprite = getTileSpriteFromNum(Int(foobar))
-                    sprite.position = CGPoint(x: j*tileWidth + offsetx, y: k*tileHeight + i*height + offsety)
-                    var a = -i*1000
-                    var b = -k*10
-                    sprite.zPosition = CGFloat(a + b + j)
-                    addChild(sprite)
-                }
+                let sprite = getTileSpriteFromNum(Int(bar.x))
+                sprite.position = CGPoint(x: i*tileWidth + offsetx, y: j*tileHeight + Int(bar.y)*height + offsety)
+                sprite.zPosition = CGFloat(-j*2)
+                addChild(sprite)
             }
         }
-        //drawShadows()
-        player.position = CGPointMake(CGFloat(startPosititons[level].x*tileWidth + offsetx), CGFloat(startPosititons[level].y*tileHeight + offsety))
+        drawShadows()
+        player.position = CGPointMake(startPosititons[level].x*CGFloat(tileWidth) + CGFloat(offsetx), startPosititons[level].y*CGFloat(tileHeight) + CGFloat(offsety))
         player.zPosition = 100
         if level == 1 {
             
         }
         addChild(player)
         
-        goal.position = CGPointMake(CGFloat(goalLocations[level].x*tileWidth + offsetx), CGFloat(goalLocations[level].z*tileHeight + offsety + tileHeight/2)/* + CGFloat(map[Int(goalLocation.x)][Int(goalLocation.y)]*height) \\*/)
+        let f = CGFloat((map[Int(goalLocations[level].x)][Int(goalLocations[level].y)].y)*CGFloat(height))
+        goal.position = CGPointMake(goalLocations[level].x*CGFloat(tileWidth) + CGFloat(offsetx), (goalLocations[level].y)*CGFloat(tileHeight) + CGFloat(offsety) + CGFloat(tileHeight/2)/* + CGFloat(map[Int(goalLocation.x)][Int(goalLocation.y)]*height) \\*/)
+        goal.position.y += f
         
         
         goal.zPosition = 30
@@ -374,7 +327,7 @@ class GameScene: SKScene {
     
     
      
-    /*func drawShadows() {
+    func drawShadows() {
         for(i, foo) in map.enumerate() {
             for(j, _) in foo.enumerate() {
                 
@@ -423,5 +376,5 @@ class GameScene: SKScene {
         shadow.zPosition = 100
         
         addChild(shadow)
-    }*/
+    }
 }

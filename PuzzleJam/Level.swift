@@ -11,13 +11,13 @@ import SpriteKit
 
 class Level {
     
-    var map: [[[Int]]]
+    var map: [[CGPoint]]
     var startX: Int
     var startY: Int
     var bugs: [Enemy]
     var gems: [Gem]
     
-    init(map: [[[Int]]], x: Int, y: Int, bugs: [Enemy], gems: [Gem]) {
+    init(map: [[CGPoint]], x: Int, y: Int, bugs: [Enemy], gems: [Gem]) {
         self.map = map
         startX = x
         startY = y
