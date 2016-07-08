@@ -12,16 +12,15 @@ import SpriteKit
 class EnemyBackAndForth: Enemy {
     
     var back = false
-    var mapX = 5
+    var mapX = 0
     var mapY = 1
-    var mapZ = 5
+    var mapZ = 0
     
-    init(location: Vector3) {
+    init(x: Int, y: Int) {
         super.init()
-        sprite.position = CGPointMake(CGFloat(location.x*GameScene.datileWidth), CGFloat(location.z*GameScene.datileHeight))
-        mapX = location.x
-        mapY = location.y
-        mapZ = location.z
+        sprite.position = CGPointMake(CGFloat(x*GameScene.datileWidth), CGFloat(y*GameScene.datileHeight))
+        mapX = x
+        mapY = y
         sprite.position.y += CGFloat(GameScene.datileHeight) + 15
         sprite.position.x += CGFloat(GameScene.datileWidth/2)
     }
@@ -44,9 +43,6 @@ class EnemyBackAndForth: Enemy {
                 return
             }
         } else {
-            print(mapX)
-            print(mapY)
-            print(mapZ)
             if map[mapY][mapZ][mapX + 1] == 0 {
                 
                 mapX += 1

@@ -16,7 +16,7 @@ class GameScene: SKScene {
     
     var levels: [Level] = [Level]()
     static let daoffsetX = 50
-    static let daoffsetY = 0
+    static let daoffsetY = 70
     static let datileWidth = 100
     static let datileHeight = 80
 
@@ -24,7 +24,7 @@ class GameScene: SKScene {
     let tileHeight = GameScene.datileHeight
 
     var offsetx = 50
-    var offsety = 0
+    var offsety = 70
     
     var goalLocations = [Vector3(x: 7, z: 6, y: 0), Vector3(x: 7, z: 6, y: 0), Vector3(x: 7, z: 6, y: 0)]
     var startPosititons = [Vector3(x: 3, z: 2, y: 0), Vector3(x: 4, z: 2, y: 0), Vector3(x: 5, z: 2, y: 0)]
@@ -52,9 +52,9 @@ class GameScene: SKScene {
     var text2: SKLabelNode!
     var numText: SKLabelNode!
     
-    var playerX = 5
+    var playerX = 0
     var playerY = 0
-    var playerZ = 5
+    var playerZ = 0
 
     
     override func didMoveToView(view: SKView) {
@@ -90,25 +90,66 @@ class GameScene: SKScene {
     }
     
     func loadLevels() {
-
+        //X value is tile type. Y value is tile height
         
-        var level1: [[[Int]]] = []
+        /*let level1 = [[C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+                       [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+                       [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+                       [C(3, y: 0), C(3, y: 0), C(0, y: 1), C(0, y: 1), C(3, y: 0), C(0, y: 1), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+                       [C(3, y: 0), C(3, y: 0), C(0, y: 1), C(3, y: 0), C(3, y: 0), C(0, y: 1), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+                       [C(3, y: 0), C(3, y: 0), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(3, y: 0), C(3, y: 0)],
+                       [C(3, y: 0), C(3, y: 0), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(3, y: 0), C(3, y: 0)],
+                       [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(3, y: 0), C(3, y: 0)],
+                       [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+                       [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+                       [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+                       [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+                       [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)]]
         
-
+        let level2 = [[C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+            [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+            [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+            [C(3, y: 0), C(3, y: 0), C(0, y: 1), C(0, y: 1), C(3, y: 0), C(0, y: 1), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+            [C(3, y: 0), C(3, y: 0), C(0, y: 1), C(3, y: 0), C(3, y: 0), C(0, y: 1), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+            [C(3, y: 0), C(3, y: 0), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(3, y: 0), C(3, y: 0)],
+            [C(3, y: 0), C(3, y: 0), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(3, y: 0), C(3, y: 0)],
+            [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(3, y: 0), C(3, y: 0)],
+            [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+            [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+            [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+            [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+            [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)]]
         
-        let d = [[9, 9, 9, 9, 9, 9, 9, 9, 9],
-                 [9, 9, 9, 9, 9, 9, 9, 9, 9],
-                 [9, 9, 9, 0, 0, 0, 0, 9, 9],
-                 [9, 9, 0, 0, 9, 0, 0, 9, 9],
-                 [9, 9, 0, 9, 9, 0, 0, 9, 9],
-                 [9, 9, 0, 0, 0, 0, 0, 9, 9],
-                 [9, 9, 0, 0, 0, 0, 0, 9, 9],
-                 [9, 9, 0, 9, 9, 9, 0, 9, 9],
-                 [9, 9, 0, 0, 0, 0, 0, 9, 9],
-                 [9, 9, 9, 9, 9, 9, 9, 9, 9],
-                 [9, 9, 9, 9, 9, 9, 9, 9, 9],
-                 [9, 9, 9, 9, 9, 9, 9, 9, 9],
-                 [9, 9, 9, 9, 9, 9, 9, 9, 9]]
+        let level3 = [[C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+            [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+            [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+            [C(3, y: 0), C(3, y: 0), C(0, y: 1), C(0, y: 1), C(3, y: 0), C(0, y: 1), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+            [C(3, y: 0), C(3, y: 0), C(0, y: 1), C(3, y: 0), C(3, y: 0), C(0, y: 1), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+            [C(3, y: 0), C(3, y: 0), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(3, y: 0), C(3, y: 0)],
+            [C(3, y: 0), C(3, y: 0), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(3, y: 0), C(3, y: 0)],
+            [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(3, y: 0), C(3, y: 0)],
+            [C(3, y: 0), C(3, y: 0), C(3, y:
+                0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+            [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+            [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+            [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+            [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)]]*/
+        
+        var level1: [[[Int]]] = [[[]]]
+        
+                let d = [[0, 0, 0, 0, 0, 0, 0, 0, 0],
+                         [0, 0, 0, 0, 0, 0, 0, 0, 0],
+                         [0, 0, 0, 0, 0, 0, 0, 0, 0],
+                         [0, 0, 0, 0, 0, 0, 0, 0, 0],
+                         [0, 0, 0, 0, 0, 0, 0, 0, 0],
+                         [0, 0, 0, 0, 0, 0, 0, 0, 0],
+                         [0, 0, 0, 0, 0, 0, 0, 0, 0],
+                         [0, 0, 0, 0, 0, 0, 0, 0, 0],
+                         [0, 0, 0, 0, 0, 0, 0, 0, 0],
+                         [0, 0, 0, 0, 0, 0, 0, 0, 0],
+                         [0, 0, 0, 0, 0, 0, 0, 0, 0],
+                         [0, 0, 0, 0, 0, 0, 0, 0, 0],
+                         [0, 0, 0, 0, 0, 0, 0, 0, 0]]
         
         level1.append(d)
         
@@ -116,8 +157,8 @@ class GameScene: SKScene {
                 let a = [[0, 0, 0, 0, 0, 0, 0, 0, 0],
                          [0, 0, 0, 0, 0, 0, 0, 0, 0],
                          [0, 0, 0, 1, 1, 1, 1, 0, 0],
-                         [0, 0, 1, 1, 0, 1, 1, 0, 0],
-                         [0, 0, 1, 0, 0, 1, 1, 0, 0],
+                         [0, 0, 1, 1, 1, 1, 1, 0, 0],
+                         [0, 0, 1, 1, 1, 1, 1, 0, 0],
                          [0, 0, 1, 1, 1, 1, 1, 0, 0],
                          [0, 0, 1, 1, 1, 1, 1, 0, 0],
                          [0, 0, 1, 0, 0, 0, 1, 0, 0],
@@ -131,8 +172,8 @@ class GameScene: SKScene {
                 let f = [[4, 4, 4, 4, 4, 4, 4, 4, 4],
                          [4, 4, 4, 4, 4, 4, 4, 4, 4],
                          [4, 4, 4, 1, 1, 1, 1, 4, 4],
-                         [4, 4, 1, 1, 4, 1, 1, 4, 4],
-                         [4, 4, 1, 4, 4, 1, 1, 4, 4],
+                         [4, 4, 1, 1, 1, 1, 1, 4, 4],
+                         [4, 4, 1, 1, 1, 1, 1, 4, 4],
                          [4, 4, 1, 1, 1, 1, 1, 4, 4],
                          [4, 4, 1, 1, 1, 1, 1, 4, 4],
                          [4, 4, 1, 4, 4, 4, 1, 4, 4],
@@ -145,9 +186,9 @@ class GameScene: SKScene {
         level1.append(f)
 
         
-        levels.append(Level(map: level1, x: 3, y: 2, bugs: [EnemyBackAndForth(location: Vector3(x: 4, z: 5, y: 0))], gems: [Gem(x: 4, y: 5, color: "OrangeSmall")]))
+        levels.append(Level(map: level1, x: 3, y: 2, bugs: [EnemyBackAndForth(x: 4, y: 5)], gems: [Gem(x: 4, y: 5, color: "OrangeSmall")]))
         levels.append(Level(map: level1, x: 3, y: 2, bugs: [EnemyBlocker(x: 4, y: 5)], gems: [Gem(x: 4, y: 5, color: "OrangeSmall")]))
-        levels.append(Level(map: level1, x: 3, y: 2, bugs: [EnemyBackAndForth(location: Vector3(x: 4, z: 5, y: 0))], gems: [Gem(x: 4, y: 5, color: "OrangeSmall")]))
+        levels.append(Level(map: level1, x: 3, y: 2, bugs: [EnemyBackAndForth(x: 4, y: 5)], gems: [Gem(x: 4, y: 5, color: "OrangeSmall")]))
     }
     
     func canMove(move: Vector3) -> Bool {
@@ -165,25 +206,24 @@ class GameScene: SKScene {
             
             if(abs(diffx) > abs(diffy)) {
                 //moving on the x-axis
-                print("x is \(playerX), y is \(playerY), z is \(playerZ)")
                 if(diffx > 0) {
                     if(canMove(Vector3( x: playerX + 1, z: playerZ, y: playerY))) {
-                        playerX += 1
+                    player.position.x += CGFloat(tileWidth)
                     }
                 } else {
                     if(canMove(Vector3(x: playerX - 1, z: playerZ, y: playerY))) {
-                          playerX -= 1
+                     player.position.x -= CGFloat(tileWidth)
                     }
                 }
             } else {
                 //moving on the z-axis
                 if(diffy > 0) {
                     if(canMove(Vector3(x: playerX, z: playerZ + 1, y: playerY))) {
-                       playerZ += 1
+                        player.position.y += CGFloat(tileHeight)
                     }
                 } else {
                     if(canMove(Vector3(x: playerX, z: playerZ - 1, y: playerY))) {
-                        playerZ -= 1
+                        player.position.y -= CGFloat(tileHeight)
                     }
                 }
             }
@@ -202,14 +242,13 @@ class GameScene: SKScene {
                 
             }
         }
-        
-        
   
     }
     
     func checkForBugCollisions() {
-    if levelDone { return }
-        print(level)
+        if levelDone { return }
+        
+        //This line gives fatal error: Index out of range when I die and the game restarts
         for bug in levels[level].bugs {
             if Int(convertPointToGrid(player.position).x) == Int(convertPointToGrid(bug.sprite.position).x) && Int(convertPointToGrid(player.position).y) == Int(convertPointToGrid(bug.sprite.position).y) {
                 //Ya dead! 
@@ -219,13 +258,11 @@ class GameScene: SKScene {
     }
     
     override func update(currentTime: CFTimeInterval) {
-        checkForBugCollisions()
-        
-        print("Does (\(playerX), \(playerZ)) equal (\(goalLocations[level].x), \(goalLocations[level].z))?")
-        
-        if Int(playerX) == Int(goalLocations[level].x) && Int(playerZ) == Int(goalLocations[level].z) && playerY == goalLocations[level].y && goal.parent == self && !levelDone {
-            print("It sure does")
-            print(level)
+       checkForBugCollisions()
+       // :(
+        //print("Does (\(Int(convertPointToGrid(player.position).x)), \(Int(convertPointToGrid(player.position).y))) equal \(goalLocation)")
+        if playerX == Int(goalLocations[level].x) && playerZ == Int(goalLocations[level].y) && goal.parent == self && playerY == goalLocations[level].y {
+            print("You have completeted the level with sufficient bug-avoiding aptitude to continue. Yay.")
             goal.removeFromParent()
             levelDone = true
             text1.zPosition = 100
@@ -239,10 +276,12 @@ class GameScene: SKScene {
              addChild(numText)
 
         }
+       
         if levelDone {
             scroll += 5
             if scroll > /*380000*/(map[0].count/2)*tileWidth {
                 levelDone = false
+                //level += 1
                 for i in 1...map.count/2 {
                     map[i].removeFirst()
                     
@@ -258,11 +297,11 @@ class GameScene: SKScene {
                 /* Ensure correct aspect mode */
                 scene.scaleMode = .AspectFill
                 
-                scene.level = self.level
+                scene.level = self.level - 1
                 /* Start game scene */
                 skView.presentScene(scene)
                 
-                
+
                 text1.removeFromParent()
                 text2.removeFromParent()
                 numText.removeFromParent()
@@ -273,10 +312,7 @@ class GameScene: SKScene {
             }
         }
        
-        player.position.x = CGFloat(playerX*tileWidth + offsetx)
-        player.position.y = CGFloat(playerZ*tileHeight + offsety + playerY*height)
-        player.position.y += CGFloat(50)
-    }
+    }//
     
     func getTileSpriteFromNum(num: Int) -> SKSpriteNode {
         let s = SKSpriteNode(imageNamed: "\(num).png")
@@ -295,13 +331,14 @@ class GameScene: SKScene {
         /* Start game scene */
         skView.presentScene(scene)
         
-        //scene.level = self.level - 1
+        scene.level = self.level - 1
     }
 
+    
     func nextLevel() {
         level += 1
         //Error: Will extend map upwards, not to the side
-        print(level)
+        
         for list in levels[level].map {
             map.append(list)
         }
@@ -310,11 +347,11 @@ class GameScene: SKScene {
         for(i, foo) in map.enumerate() {
             for(j, bar) in foo.enumerate() {
                 for(k, foobar) in bar.enumerate() {
-                     //print("I is \(i), j is \(j), and k is \(k)")
+                     print("I is \(i), j is \(j), and k is \(k)")
                     let sprite = getTileSpriteFromNum(Int(foobar))
                     sprite.position = CGPoint(x: j*tileWidth + offsetx, y: k*tileHeight + i*height + offsety)
-                    let a = -i*1000
-                    let b = -k*10
+                    var a = -i*1000
+                    var b = -k*10
                     sprite.zPosition = CGFloat(a + b + j)
                     addChild(sprite)
                 }
