@@ -14,6 +14,9 @@ enum AI {
 }
 
 class Enemy{
+    
+    var mapX = 0
+    var mapY = 0
 
     var sprite = SKSpriteNode(imageNamed: "Enemy Bug.png")
     

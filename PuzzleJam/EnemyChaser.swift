@@ -9,9 +9,8 @@
 import Foundation
 import SpriteKit
 
-class EnemyBlocker: Enemy {
+class EnemyChaser: Enemy {
     
-    var back = false
     var direction = 0
     
     init(x: Int, y: Int) {
@@ -21,6 +20,7 @@ class EnemyBlocker: Enemy {
         mapY = y
         sprite.position.y += CGFloat(GameScene.datileHeight) + 15
         sprite.position.x += CGFloat(GameScene.datileWidth/2)
+        sprite.zPosition = CGFloat(mapY * -2 + 1)
     }
     
     override func loadEnemy(x: Int, y: Int) {
@@ -36,15 +36,20 @@ class EnemyBlocker: Enemy {
             mapX -= 1
             sprite.xScale = -1
             
-        } else if mapY - 1 > Int(playerPosition.y)  && map[mapX][mapY].y == map[mapX][mapY-1].y{
+        } else if mapY < Int(playerPosition.x) && map[mapX][mapY].y == map[mapX][mapY+1].y {
+            mapY += 1
+            
+        } else if mapY > Int(playerPosition.y)  && map[mapX][mapY].y == map[mapX][mapY-1].y {
             mapY -= 1
         }
-        
         sprite.position = CGPointMake(CGFloat(mapX*GameScene.datileWidth), CGFloat(mapY*GameScene.datileHeight))
         sprite.position.y += CGFloat(GameScene.datileHeight) + 15
         sprite.position.x += CGFloat(GameScene.datileWidth/2)
+        sprite.zPosition = CGFloat(mapY * -2 + 1)
         print("Bug y is \(map[mapX][mapY].y)")
         print("Map x is \(mapX) and map y is \(mapY)")
         
     }
+    
+    
 }

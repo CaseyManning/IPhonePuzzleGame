@@ -19,6 +19,7 @@ class Gem {
         sprite = SKSpriteNode(imageNamed: "Gem \(color).png")
         sprite.position.x = CGFloat(x*GameScene.datileWidth + GameScene.daoffsetX)
         sprite.position.y = CGFloat(y*GameScene.datileHeight + GameScene.daoffsetY + 60)
+        sprite.zPosition = CGFloat(y * -2 + 1)
         self.x = x
         self.y = y
     }

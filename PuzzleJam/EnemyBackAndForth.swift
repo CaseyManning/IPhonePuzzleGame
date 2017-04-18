@@ -12,9 +12,6 @@ import SpriteKit
 class EnemyBackAndForth: Enemy {
     
     var back = false
-    var mapX = 0
-    var mapY = 0
-    var mapZ = 0
     
     init(x: Int, y: Int) {
         super.init()

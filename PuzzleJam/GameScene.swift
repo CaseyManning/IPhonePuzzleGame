@@ -26,8 +26,8 @@ class GameScene: SKScene {
     var offsetx = 50
     var offsety = 70
     
-    var goalLocations = [CGPointMake(7, 6), CGPointMake(7, 6), CGPointMake(7, 6)]
-    var startPosititons = [CGPointMake(3, 2), CGPointMake(4, 2), CGPointMake(5, 2)]
+    var goalLocations = [CGPointMake(7, 6), CGPointMake(7, 6), CGPointMake(7, 6), CGPointMake(7, 6), CGPointMake(7, 6), CGPointMake(7, 6)]
+    var startPosititons = [CGPointMake(3, 2), CGPointMake(4, 2), CGPointMake(5, 2), CGPointMake(3, 2), CGPointMake(3, 2), CGPointMake(3, 2)]
     
     let height = 40
     var numGems = 0
@@ -119,21 +119,86 @@ class GameScene: SKScene {
         let level3 = [[C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
             [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
             [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
-            [C(3, y: 0), C(3, y: 0), C(0, y: 1), C(0, y: 1), C(3, y: 0), C(0, y: 1), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
-            [C(3, y: 0), C(3, y: 0), C(0, y: 1), C(3, y: 0), C(3, y: 0), C(0, y: 1), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+            [C(3, y: 0), C(3, y: 0), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+            [C(3, y: 0), C(3, y: 0), C(0, y: 1), C(0, y: 2), C(0, y: 2), C(0, y: 1), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
             [C(3, y: 0), C(3, y: 0), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(3, y: 0), C(3, y: 0)],
             [C(3, y: 0), C(3, y: 0), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(3, y: 0), C(3, y: 0)],
             [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(3, y: 0), C(3, y: 0)],
-            [C(3, y: 0), C(3, y: 0), C(3, y:
-                0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+            [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
             [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
             [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
             [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
             [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)]]
         
+        let level4 = [[C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+                      [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+                      [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+                      [C(3, y: 0), C(3, y: 0), C(0, y: 1), C(0, y: 1), C(3, y: 0), C(0, y: 1), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+                      [C(3, y: 0), C(3, y: 0), C(0, y: 1), C(3, y: 0), C(3, y: 0), C(0, y: 1), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+                      [C(3, y: 0), C(3, y: 0), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(3, y: 0), C(3, y: 0)],
+                      [C(3, y: 0), C(3, y: 0), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(3, y: 0), C(3, y: 0)],
+                      [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(3, y: 0), C(3, y: 0)],
+                      [C(3, y: 0), C(3, y: 0), C(3, y:
+                        0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+                      [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+                      [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+                      [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+                      [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)]]
+        
+        
+        let level5 = [[C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+                      [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+                      [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+                      [C(3, y: 0), C(3, y: 0), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+                      [C(3, y: 0), C(3, y: 0), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+                      [C(3, y: 0), C(3, y: 0), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(3, y: 0), C(3, y: 0)],
+                      [C(3, y: 0), C(3, y: 0), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(3, y: 0), C(3, y: 0)],
+                      [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(3, y: 0), C(3, y: 0)],
+                      [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+                      [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+                      [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+                      [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+                      [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)]]
+        
+        
+        let level6 = [[C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+                      [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+                      [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+                      [C(3, y: 0), C(3, y: 0), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+                      [C(3, y: 0), C(3, y: 0), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+                      [C(3, y: 0), C(3, y: 0), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(3, y: 0), C(3, y: 0)],
+                      [C(3, y: 0), C(3, y: 0), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(3, y: 0), C(3, y: 0)],
+                      [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(3, y: 0), C(3, y: 0)],
+                      [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+                      [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+                      [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+                      [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+                      [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)]]
+
+        
+        
+        let level7 = [[C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+                      [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+                      [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+                      [C(3, y: 0), C(3, y: 0), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+                      [C(3, y: 0), C(3, y: 0), C(0, y: 1), C(0, y: 0), C(0, y: 0), C(0, y: 1), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+                      [C(3, y: 0), C(3, y: 0), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(3, y: 0), C(3, y: 0)],
+                      [C(3, y: 0), C(3, y: 0), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(3, y: 0), C(3, y: 0)],
+                      [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(0, y: 1), C(0, y: 1), C(0, y: 1), C(3, y: 0), C(3, y: 0)],
+                      [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+                      [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+                      [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+                      [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)],
+                      [C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0), C(3, y: 0)]]
+
+        
         levels.append(Level(map: level1, x: 3, y: 2, bugs: [EnemyBackAndForth(x: 4, y: 5)], gems: [Gem(x: 4, y: 5, color: "OrangeSmall")]))
         levels.append(Level(map: level2, x: 3, y: 2, bugs: [EnemyBlocker(x: 4, y: 5)], gems: [Gem(x: 4, y: 5, color: "OrangeSmall")]))
-        levels.append(Level(map: level3, x: 3, y: 2, bugs: [EnemyBackAndForth(x: 4, y: 5)], gems: [Gem(x: 4, y: 5, color: "OrangeSmall")]))
+        levels.append(Level(map: level3, x: 3, y: 2, bugs: [EnemyChaser(x: 4, y: 5)], gems: [Gem(x: 4, y: 5, color: "OrangeSmall")]))
+        levels.append(Level(map: level4, x: 3, y: 2, bugs: [], gems: [Gem(x: 4, y: 5, color: "OrangeSmall")]))
+        levels.append(Level(map: level5, x: 3, y: 2, bugs: [], gems: [Gem(x: 4, y: 5, color: "OrangeSmall")]))
+        levels.append(Level(map: level6, x: 3, y: 2, bugs: [], gems: [Gem(x: 4, y: 5, color: "OrangeSmall")]))
+        levels.append(Level(map: level7, x: 3, y: 2, bugs: [], gems: [Gem(x: 4, y: 5, color: "OrangeSmall")]))
     }
     
     func canMove(position: CGPoint, move: CGPoint) -> Bool {
@@ -209,6 +274,7 @@ class GameScene: SKScene {
         
         for bug in levels[level].bugs {
             if Int(convertPointToGrid(player.position).x) == Int(convertPointToGrid(bug.sprite.position).x) && Int(convertPointToGrid(player.position).y) == Int(convertPointToGrid(bug.sprite.position).y) {
+                print(levels[level].bugs)
                 //Ya dead! 
                 restartLevel()
             }
@@ -216,10 +282,14 @@ class GameScene: SKScene {
     }
     
     override func update(currentTime: CFTimeInterval) {
+       for bug in levels[level].bugs {
+            print("Bug x is \(bug.mapX), and bug y is \(bug.mapY)")
+        }
        checkForBugCollisions()
        // :(
         //print("Does (\(Int(convertPointToGrid(player.position).x)), \(Int(convertPointToGrid(player.position).y))) equal \(goalLocation)")
         if Int(convertPointToGrid(player.position).x) == Int(goalLocations[level].x) && Int(convertPointToGrid(player.position).y) == Int(goalLocations[level].y) && goal.parent == self {
+            if level < levels.count - 2 {
             print("You have completeted the level with sufficient bug-avoiding aptitude to continue. Yay.")
             goal.removeFromParent()
             levelDone = true
@@ -234,7 +304,11 @@ class GameScene: SKScene {
              addChild(text1)
              addChild(text2)
              addChild(numText)
-
+            } else {
+                goal.removeFromParent()
+                text1.zPosition = 100
+                text1.text = "No more Levels"
+            }
         }
        
         if levelDone {
@@ -285,17 +359,18 @@ class GameScene: SKScene {
         
         /* Ensure correct aspect mode */
         scene.scaleMode = .AspectFill
-        
+        skView.showsFPS = false
+        skView.showsNodeCount = false
+        scene.level = self.level - 1
         /* Start game scene */
         skView.presentScene(scene)
         
-        scene.level = self.level - 1
+        
     }
 
     
     func nextLevel() {
         level += 1
-        print("DOTATOP \(level)")
         for list in levels[level].map {
             map.append(list)
         }
